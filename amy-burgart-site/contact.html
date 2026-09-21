@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Talk — Amy Burgart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Amy Burgart</a>
+    <div class="links">
+      <a href="about.html">About</a>
+      <a href="index.html#work">Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="cs-hero" style="text-align:center;">
+  <div class="wrap">
+    <span class="cs-eyebrow">Now Booking</span>
+    <h1 style="max-width:640px;">Let's grow your business</h1>
+    <p style="color:var(--candle-ivory); font-size:17px; max-width:520px; margin:0 auto; line-height:1.5;">
+      Tell me a bit about what you need — a new site, ongoing marketing support, or something else — and I'll get back to you within a couple of days.
+    </p>
+  </div>
+</header>
+
+<section class="section bg-cream">
+  <div class="wrap" style="max-width:640px;">
+
+    <form id="contact-form" class="contact-form" action="https://formspree.io/f/mzezreab" method="POST">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="business">Business / website (optional)</label>
+        <input type="text" id="business" name="business">
+      </div>
+      <div class="form-row">
+        <label for="message">What do you need help with?</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="New inquiry from amyburgart.com">
+      <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+    </form>
+
+    <div id="form-success" class="form-success" hidden>
+      <h3>Thanks — got it!</h3>
+      <p>I'll be in touch within a couple of business days.</p>
+    </div>
+
+    <div id="form-error" class="form-error" hidden>
+      <p>Something went wrong sending that — please email me directly at <a href="mailto:amy.wansing@gmail.com">amy.wansing@gmail.com</a> instead.</p>
+    </div>
+
+    <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--mauve);">
+      Prefer email? Reach me at <a href="mailto:amy.wansing@gmail.com" style="color:var(--terracotta); font-weight:600;">amy.wansing@gmail.com</a>
+    </p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>Amy Burgart — Freelance Growth Marketing Manager</p>
+</footer>
+
+<script>
+  // Standard Formspree AJAX submission. This is blocked by the sandbox
+  // on claude.ai artifact hosting, but works normally on real hosting
+  // (Vercel, Netlify, etc.) since there's no cross-origin fetch restriction.
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  const errorBox = document.getElementById('form-error');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    errorBox.hidden = true;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.hidden = true;
+        success.hidden = false;
+      } else {
+        errorBox.hidden = false;
+      }
+    } catch (err) {
+      errorBox.hidden = false;
+    }
+  });
+</script>
+
+<script src="script.js" defer></script>
+</body>
+</html>
