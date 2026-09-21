@@ -373,7 +373,7 @@ p { margin: 0; }
   background-position: 100% 100%;
   box-shadow: 0 20px 48px rgba(201,123,99,.35);
 }
-.cta-card .cta-copy { flex: 1 1 400px; }
+.cta-card .cta-copy { flex: 1 1 400px; min-width: 0; }
 .cta-card .cta-eyebrow {
   color: var(--candle-ivory);
   font-weight: 700;
@@ -826,7 +826,9 @@ p { margin: 0; }
   .dataviz-cards { grid-template-columns: 1fr; }
   .cs-meta { justify-content: flex-start; flex-direction: column; gap: 20px; }
   .cta-card { flex-direction: column; text-align: center; align-items: center; }
+  .cta-card .cta-copy { width: 100%; }
   .cta-card p { margin: 0 auto; }
+  .cta-card .btn { width: 100%; box-sizing: border-box; }
   .gallery-row { flex-direction: column; }
   .site-nav .links { gap: 16px; }
 }
