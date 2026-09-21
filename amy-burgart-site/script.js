@@ -11,6 +11,28 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ---- Mobile nav toggle ---- */
+  var navToggle = document.querySelector('.nav-toggle');
+  if (nav && navToggle) {
+    var closeNav = function () {
+      nav.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+    navToggle.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    nav.querySelectorAll('.links a').forEach(function (link) {
+      link.addEventListener('click', closeNav);
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('nav-open') && !nav.contains(e.target)) closeNav();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeNav();
+    });
+  }
+
   /* ---- Scroll reveal ---- */
   var revealSelectors = [
     '.hero-copy', '.hero-portrait',
