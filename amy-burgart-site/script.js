@@ -44,6 +44,7 @@
     '.dv-card', '.stats-row-light .stat-card',
     '.timeline-item',
     '.assets-section .eyebrow', '.assets-section h2', '.assets-gallery > *',
+    '.section .eyebrow.terracotta', '.section .gallery-photo',
     '.cta-simple h2', '.cta-simple p', '.cta-simple .btn',
     '.bio-photo', '.bio-copy', '.value-card',
     '.contact-form', '#form-success'
